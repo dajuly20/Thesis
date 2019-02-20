@@ -1,0 +1,302 @@
+ 
+
+
+\documentclass[a4paper,headsepline,bibliography=totoc,listof=totoc]{scrartcl}							%dokumentenklasse
+\usepackage[utf8]{inputenc}															%europäische umlaute und schriftzeichen
+
+\usepackage[table]{xcolor} 
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\usepackage{csvsimple}
+\usepackage[T1]{fontenc}															%
+\usepackage[ngerman]{babel}															%sprachpaket deutsch, neue deutsche rechtschreibung
+  \addto\captionsngerman{%
+    \renewcommand{\figurename}{Abb.}%
+    \renewcommand{\tablename}{Tab.}%
+  }
+\usepackage{graphicx}																%png grafiken
+\usepackage{svg}
+\setsvg{inkscape=inkscape -z -D,svgpath=fig/}
+
+\usepackage{listings}																%source code einbindung
+%\usepackage{lmodern}																%font
+%\usepackage[eso-foot]{svninfo}														%svn infos 		 
+\usepackage{scrpage2}																%kopf und fußzeilen				
+\usepackage{url}																	%URL in Großbuchstaben
+%\usepackage{ulem}																	%doppelt unterstreichen
+%\usepackage{tikz}																	%zeichnen
+%\bibliography{quellen}																%lade literatur verzeichnis
+\usepackage{here}																	%exaktes plazieren der Grafiken (große PAP'S)
+%\addtokomafont{sectioning}{\rmfamily}												%Titel anders gesetzt (serifenlos)
+\usepackage{dirtree} 																%Dateistruktur erstellen
+%\usepackage{booktabs}																%saubere Tabellen
+%\usepackage{pdfpages}																%pdf direkt einbinden
+%\usepackage{pgf,tikz}
+%\usetikzlibrary{arrows}
+%\usepackage{eurosans}
+%
+\usepackage{pdfpages}
+\usepackage{textcomp} 
+
+\newcommand{\degre}{\ensuremath{^\circ}}
+\usepackage{wrapfig} 
+
+\usepackage{amsmath}
+ 
+\usepackage[
+        colorlinks=false,
+        pdfborder={0 0 0},
+	    pdftitle={Projektdokumentation KlausurNoten App},
+	    pdfsubject={Dokumentation der Durchführung der Android Projektarbeit unter Leitung von Prof. Dr. Karlheinz Blankenbach},
+	    pdfauthor={Julian Wiche},
+	    pdfkeywords={Android, Projektarbeit, KlausurNoten}
+	]{hyperref}
+
+
+%\usepackage{europs} 
+%****************************************************************************************************************************************************
+%anpassungen für listings 
+\usepackage{color}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{ffqqtt}{rgb}{1,0,0.2}
+\definecolor{qqzzqq}{rgb}{0,0.6,0}
+\definecolor{qqqqff}{rgb}{0,0,1}
+
+
+
+
+\lstset{ %
+   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+   basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+   breaklines=true,                 % sets automatic line breaking
+   captionpos=b,                    % sets the caption-position to bottom
+   commentstyle=\color{mygreen},    % comment style
+   deletekeywords={...},            % if you want to delete keywords from the given language
+   escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+   extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+   frame=single,                    % adds a frame around the code
+   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+   keywordstyle=\color{blue},       % keyword style
+   language=Matlab,                 % the language of the code
+   morekeywords={byte},            % if you want to add more keywords to the set
+   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+   numbersep=5pt,                   % how far the line-numbers are from the code
+   numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+   rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+   showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+   showstringspaces=false,          % underline spaces within strings only
+   showtabs=false,                  % show tabs within strings adding particular underscores
+   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+   stringstyle=\color{mymauve},     % string literal style
+   tabsize=2,                       % sets default tabsize to 2 spaces
+   %float=hbt,
+   title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+   escapeinside={(*@}{@*)}			%labels im listing
+}
+
+\setlength{\parindent}{0pt}
+
+\lstdefinelanguage{HTML5}{
+        language=html,
+        sensitive=true, 
+        alsoletter={<>=-},
+        otherkeywords={
+        % HTML tags
+        <html>, <head>, <title>, </title>, <meta, />, </head>, <body>,
+        <canvas, \/canvas>, <script>, </script>, </body>, </html>, <!, html>, <style>, </style>, ><
+        },  
+        ndkeywords={
+        % General
+        =,
+        % HTML attributes
+        charset=, id=, width=, height=,
+        % CSS properties
+        border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
+        },  
+        morecomment=[s]{<!--}{-->},
+        tag=[s]
+}
+
+\lstdefinestyle{phpnocomment}
+{
+    numberblanklines=false,
+    language=php,
+    tabsize=4,
+    commentstyle=\color{white},
+    keywordstyle=\color{red}
+    %identifierstyle= %plain identifiers for make
+}
+
+
+%****************************************************************************************************************************************************
+
+\begin{document}
+\pagestyle{headings}
+
+\begin{titlepage}
+\begin{center}
+
+\includegraphics[width=0.9\textwidth]{./img/logo} \\[0.8 cm]
+
+\text{\LARGE \textbf{Fakultät für Technik}}\\[0.3 cm]
+
+\text{\LARGE \textbf{Bereich Informationstechnik}}\\[0.3 cm]
+
+\text{ }
+
+\text{\LARGE \textbf{Bachelorthesis}}\\[1.5 cm]
+
+\text{Thema:}\\[1 cm]
+
+\text{\Large\textbf{SPS- Kleinsteuerung mittels Rasperry Pi}}\\[0.5 cm]
+
+\text{Konzept und Implementierung einer SPS- Kleinsteuerung auf einem }\\
+\text{Raspberry Pi mit graphischer Programmierung und IFTTT-funktionalität }\\[1 cm]
+
+\begin{tabular}[h]{ll}
+
+ \textbf{Betreuer} &Prof. Dr. Karlheinz Blankenbach \\&Prof. Dr.-Ing. Thomas Greiner\\[0.3 cm] 
+
+
+ \textbf{vorgelegt von:} &  Julian Wiche\\ 
+ & Matrikelnummer: 306675\\[0.3 cm] 
+
+ \textbf{Abgabetermin} & 19.05.2019 \\[0.3 cm] 
+
+ 
+
+\end{tabular} 
+
+\end{center}
+\end{titlepage}
+
+
+\tableofcontents
+																%inhaltsverzeichnis
+\setcounter{page}{1}
+\newpage
+
+%------------------------------------------------ %
+
+\lstset{literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+   %    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {~}{{\textasciitilde}}1
+}
+
+\newcommand{\hex}{\textsubscript{h} }
+
+\newcommand{\gqq}[1]{\glqq{}#1\grqq{}}
+\newcommand{\gq}[1]{\glq{}#1\grq{}}
+\newcommand{\fqq}[1]{\flqq{}#1\frqq{}}
+
+\newcommand{\chphl}[1]{\textit{\frqq{}#1\flqq{}}}
+
+
+
+
+\newcommand{\pthPhpScripts}{../serial2DB}
+\newcommand{\pthWeb}{../Webinterface}
+
+%setting paths for chapters
+\newcommand{\pthChps}{chp}
+\newcommand{\pthImg}{img}
+\newcommand{\pthDoc}{doc}
+
+
+
+
+
+%\newcommand{\pthEinleitung}{\pthChps/einleitung}
+%\section{Einleitung}
+%\label{chp:Einleitung}
+%\input{\pthEinleitung/einleitung.tex}
+%\newpage
+%
+%
+%\newcommand{\pthAnalyse}{\pthChps/analyse}
+%\section{Analyse des Messsystems}
+%\label{chp:Analyse}
+%\input{\pthAnalyse/analyse.tex}
+%
+%
+%\newcommand{\pthAuswertung}{\pthChps/auswertung}
+%\section{Datenerfassung und Speicherung}
+%\label{chp:Auswertung}
+%\input{\pthAuswertung/auswertung.tex}
+%
+%\newpage
+%\newcommand{\pthUebertragung}{\pthChps/uebertragung}
+%\section{Datenübertragung}
+%\label{chp:Datenuebertragung}
+%\input{\pthUebertragung/uebertragung.tex}
+%
+%
+%\newcommand{\pthDarstellung}{\pthChps/darstellung}
+%\section{Datenaufbereitung und Anzeige}
+%\label{chp:Darstellung}
+%\input{\pthDarstellung/darstellung.tex}
+
+%Skelett für neues Kapitel. 
+%Einfach Kopie von Ordner generic erstellen, ordner und enthaltene generic.tex umbenennen.
+%Zudem muss untenstehendes Skelett kopiert werden und jedes vorkommen von generic durch gew. Namen ersetzt werden.
+%(auch innerhalb der neuen tex Datei!)
+\newcommand{\pthGrundlagen}{\pthChps/grundlagen}
+\section{Grundlagen}
+\label{chp:Grundlagen}
+\input{\pthGrundlagen/grundlagen.tex}
+
+\newcommand{\pthUmsetzung}{\pthChps/umsetzung}
+\section{Umsetzung}
+\label{chp:Umsetzung}
+\input{\pthUmsetzung/umsetzung.tex}
+
+\newcommand{\pthAuswertung}{\pthChps/auswertung}
+\section{Auswertung}
+\label{chp:Auswertung}
+\input{\pthAuswertung/auswertung.tex}
+
+
+
+%\newcommand{\pthGeneric}{\pthChps/generic}
+%\section{Generic}
+%\label{chp:Generic}
+%\input{\pthGeneric/generic.tex}
+
+
+%\section{Resumé}
+%\label{chp:Resume}
+
+
+
+
+%----- %
+\newpage
+%----- %
+
+\listoffigures
+%----- %
+\newpage
+%----- %
+\listoftables
+
+%----- %
+\newpage
+%----- %
+\lstlistoflistings	
+
+ \begin{thebibliography}{999}
+  
+  \bibitem {ResyncMySqlReplication} Stackoverflow Anleitung zum resynch eines Master-Slave setup \url{https://stackoverflow.com/a/3229580/3142746}
+  \bibitem {DatenblattIC} Datenblatt Quelle \url{http://pdf1.alldatasheet.com/datasheet-pdf/view/28193/TI/SN75175.html} \textit{Abruf: 30.05.2018 13:00}
+  \end{thebibliography}
+
+\end{document}
