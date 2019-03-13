@@ -1,0 +1,68 @@
+%% when make draft: build an draft version of the file %%
+\ifdefined\isdraft
+    \documentclass[a4paper,12pt,headsepline,footsepline, a4paper,listof=totoc,bibliography=totocnumbered,draft] {scrartcl}
+\else
+    \documentclass[a4paper,12pt,headsepline,footsepline, a4paper,listof=totoc,bibliography=totocnumbered,final] {scrartcl}
+\fi
+
+\usepackage{./style/hs_bauerdom}                                                    %Styles and packages
+
+\begin{document}
+    \hypersetup{pageanchor=false}                                                   %hyperref Bugfix
+    \input{./chapter/000_pre/000_Pre.tex}                                           %Titelblatt usw
+    \pagestyle{headings}                                                            %Kopf und Fußzeile einschalten
+    \setcounter{page}{1}                                                            %Page number = 1
+ %   \pagenumbering{Roman}                                                           %Seitenzahl römisch
+    \hypersetup{pageanchor=true}                                                    %hyperref Bugfix
+    \singlespacing                                                                  %Single Zeilenabstand für Verz.
+    \tableofcontents                                                                %Inhaltsverzeichnis
+    \newpage                                                                        %Neue Seite
+    \listoffigures                                                                  %Abbildungsverzeichnis
+    \listoftables                                                                   %Tabellenverzeichnis
+    \lstlistoflistings
+%    \printglossary[type=\acronymtype,style=long,title=Abkürzungsverzeichnis,toctitle=Abkürzungsverzeichnis]
+    \newpage                                                                        %Neue Seite
+    \pagestyle{headings}                                                            %???? FIXME
+  %  \pagenumbering{arabic}                                                          %Seitenzahl arabisch
+    \onehalfspacing                                                                 %1.5 Zeilenabstand für Text
+
+    %\cite{THESIS:TriCore}
+    %\cite{THESIS:MLton}
+    %\cite{THESIS:ReISC}
+    %\cite{THESIS:REPLICA}
+    %\cite{THESIS:Bigloo}
+    %\cite{THESIS:Custom}
+    %\cite{BOOKLET:Cormack}
+    %\cite{MISC:sbs}
+    %\cite{MISC:tut}
+    %\cite{URL:Clang}
+    %\cite{URL:TableGen}
+    %\cite{URL:CodeGen}
+    %\cite{URL:Cmake}
+    %\cite{URL:Backend}
+    %\cite{THESIS:SIMD}
+    %\cite{THESIS:vex}
+    %\cite{MANUAL:mot}
+    %\cite{URL:Vectrex}
+    %\cite{ARTICLE:joh}
+
+
+
+
+
+
+
+    \input{./chapter/einleitung/einleitung.tex}
+    \input{./chapter/grundlagen/grundlagen.tex}
+    \input{./chapter/umsetzung/umsetzung.tex}
+    \input{./chapter/auswertung/auswertung.tex}
+    \input{./chapter/ausblick/ausblick.tex}
+
+    \clearpage                                                                      %Leere Seite
+    \singlespacing
+        \printbibliography                                                          %Literatur Verzeichnis
+    \onehalfspacing
+    \clearpage                                                                      %Neue Seite
+%    \pagenumbering{Alph}                                                            %Seitenzahl aplhanumerisch
+        \input{./chapter/anhang/anhang.tex}                                         %Anhang
+\end{document}

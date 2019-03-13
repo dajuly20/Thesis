@@ -1,0 +1,163 @@
+\usepackage[autooneside=false]{scrlayer-scrpage}                            %footers and headers
+%\usepackage[utf8]{inputenc}                                                 %utf for umlauts
+\usepackage[T1]{fontenc}                                                    %western font coding
+%\usepackage{lmodern}                                                        %nice font
+%\usepackage{fontspec}
+\usepackage[utf8]{luainputenc}
+
+\usepackage[ngerman]{babel,translator}                                   %
+\usepackage[babel,german=quotes]{csquotes}                                  %
+%\usepackage{amsmath}                                                       %math stuff
+%\usepackage[style=numeric-comp, backend=bibtex]{biblatex}
+\usepackage[style=numeric-comp, sorting=none,backend=biber]{biblatex}                     %
+%\DeclareFieldFormat{sentencecase}{\csname bbx@colon@search\endcsname#1}    %BugFix IEEE-Alph. Großschreibung in Titel
+\usepackage{pdfpages}                                                       %include pdf stuff
+%\usepackage{graphicx}                                                      %include png files
+\usepackage{microtype}                                                      %nice typography
+%\usepackage{url}                                                           %links into browser
+\usepackage{xspace}                                                         %use for space in newcommand enviroment
+\usepackage[german]{fancyref}                                               %references
+\usepackage[locale=DE, binary-units, output-decimal-marker={,}, per-mode=symbol]{siunitx}                 %correct SI prefixes
+%\sisetup{locale=DE, per-mode = symbol}                                     %german units
+\usepackage{here}                                                           %place figures exactly
+
+\usepackage{booktabs}                                                      %nice tables
+\usepackage{multirow}                                                      %
+\usepackage{array}
+\usepackage{color}                                                          %color
+\usepackage{colortbl}                                                      %rows in colors
+\usepackage{dirtree}
+%\usepackage{ifthen}
+%\usepackage{xstring}
+%\usepackage{calc}
+\usepackage{setspace}                                                       %onehalfspacing and stuff
+\usepackage{chngcntr}                                                      %Numerierung nach section.number
+%\usepackage[nonumberlist,                                                  %keine Seitenzahlen anzeigen
+%            acronym,                                %ein Abkürzungsverzeichnis erstellen
+%            toc,                                    %Einträge im Inhaltsverzeichnis
+%            nomain,                                 %Kein Glossar
+%            section]                                %im Inhaltsverzeichnis auf section-Ebene erscheinen
+%            {glossaries}
+
+\usepackage[printonlyused, smaller]{acronym}
+
+\usepackage{hyperref}                                                       %colored links and pdf stuff
+
+\usepackage{tikz}
+\usetikzlibrary{trees}
+%\usepackage{lscape}
+\usepackage{pdflscape}
+\usepackage{chemformula}
+\usepackage[font={small}]{caption}
+
+\usepackage{subcaption}
+\usepackage{hhline}
+
+\usepackage{listings}               			    %source code einbindung
+\usepackage[outputdir=.out,newfloat,section]{minted}
+
+\usepackage[german,noabbrev]{cleveref}
+\usepackage{nameref}                                                        %Referenzierung mit Namen anstatt Nummern der Kapitel
+%\usepackage{tabularx}                                                      %????
+%\usepackage{cancel}
+%\usepackage{enumitem}
+%%\usepackage{caption}
+%%\usepackage[titles]{tocloft}
+%\usepackage{textcomp}
+%\usepackage{arydshln}
+
+
+
+%Einstellung der Nummerierung
+\AtBeginDocument{\counterwithin{figure}{section}}
+\AtBeginDocument{\counterwithin{table}{section}}
+\AtBeginDocument{\counterwithin{lstlisting}{section}}
+\AtBeginDocument{\counterwithin{equation}{section}}
+
+
+\RedeclareSectionCommands[font=\LARGE]{section}
+\RedeclareSectionCommands[font=\Large]{subsection}
+\RedeclareSectionCommands[font=\large]{subsubsection}
+\RedeclareSectionCommands[afterskip=1.5ex plus .2ex,font=\normalsize]{paragraph,subparagraph}
+
+\DeclareNewSectionCommands[
+  style=section,
+  level=\subparagraphnumdepth+1,
+  beforeskip=-3.25ex plus -1ex minus -.2ex,
+  afterskip=1.25ex plus .1ex,
+  counterwithin=subparagraph,
+  font={\normalfont\normalsize\bfseries},
+  indent=4ex,
+  toclevel=\subparagraphtocdepth+1,
+  tocnumwidth=6em
+]{subsubparagraph,subsubsubparagraph}
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
+
+\SetupFloatingEnvironment{listing}{%
+  name={Quellcode},
+  fileext=lol}
+
+  \crefname{listing}{Quellcode}{Quellcodes}
+\Crefname{listing}{Quellcode}{Quellcodes}
+
+\usepackage{geometry}
+
+\geometry{includehead,includefoot,top=3cm,bottom=3cm}
+
+\DeclareSIUnit
+\litre{L}
+
+%Punkt am Ende des Abk.Verz abschalten
+%\renewcommand*{\glspostdescription}{}
+
+%\makeglossaries                                                            %Laden des Glossars und Abk.Verz.
+\input{style/defines.tex}                                               %Eigene Kommandos
+\input{style/lssettings.tex}                                               %Eigene Kommandos
+\input{style/newcommands.tex}                                               %Eigene Kommandos
+\input{style/hyperSetup.tex}                                                %Einstellung für hyperref
+\addbibresource{./style/Literatur.bib}             %Literaturdatenbank
+
+%
+%%Einstellung der Nummerierung
+%\AtBeginDocument{\counterwithin{figure}{section}}                           %Nummerierung auf sections bassierend (abschalten für durchgängige Nummerierung)
+%\AtBeginDocument{\counterwithin{table}{section}}
+%\AtBeginDocument{\counterwithin{equation}{section}}
+%
+
+%Einstellungen für Kopf und Fußzeile
+\automark[section]{section}                                                 %Print current section in Header
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ohead*{\headmark}
+\ofoot*{\pagemark}
+
+\setkomafont{pageheadfoot}{\color{black}}%\scshape}
+\KOMAoptions{headsepline=0.3mm:\textwidth}
+\KOMAoptions{footsepline=0.3mm:\textwidth}
+\setkomafont{headsepline}{\color{black}}
+\setkomafont{footsepline}{\color{black}}
+\renewcommand{\pnumfont}{\color{black}}\sffamily
+%
+\addtokomafont{sectioning}{\normalfont\rmfamily\bfseries}                      %andere schrift für sections
+%
+%%Einrücken am Absatzanfang verhindern
+\setlength{\parindent}{0em}
+
+\definecolor{folder}{RGB}{35,70,145}
+
+\setlength\emergencystretch{1em}
+\AtBeginDocument{\setcounter{biburllcpenalty}{8000}}
+
+\setcounter{tocdepth}{3}
+
+\usepackage{etoolbox}
+\usepackage{xpatch}
+
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\xpatchcmd{\inputminted}{\minted@fvset}{\minted@fvset\dontdofcolorbox}{}{}
+\xpatchcmd{\mintinline}{\minted@fvset}{\minted@fvset\dontdofcolorbox}{}{}
+
+\makeatother
