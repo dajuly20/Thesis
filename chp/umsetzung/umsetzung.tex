@@ -17,11 +17,15 @@ Ein Problem was sich mit dem Einbinden der Lösung zum Parsen der Logikausdrück
 \subsection{Benamungsschnema und Klassenstruktur}
 Nachdem die Auswertung beziehungsweise das Parsing der Logikausdrücke funktionierte, sollte auch die Auswertung der Bezeichner automatisiert werden. Ein Benmungsschema wurde dabei schon vorher erdacht. Es besteht aus einem führenden Großbuchstaben, gefolgt von einem Kleinbuchstaben und einer Zahl. Dabei wird der führende Buchstabe als Kanal bezeichnet, der zweite als Entität und die Ziffer als Pin-Nummer. So könnte zum Beispiel der Buchstabe \chphl{H} den Kanal Hardware beschreiben, welcher  wiederrum die Entitäten \chphl{i} für Input und \chphl{o} besitzt, welche jeweils ein Byte, also 8 Bits oder Pins haben. Im Programm repräsentiert eine Klasse mit dem Namen Channel die Kanäle, wobei jeder Kanal als Eigenschaft einen Vektor mit Entitäten führt. Eine Entität widerrum weiß, wie groß ihre Breite ist, also wie viele Bits sie hat und ob sie nur Lesbar oder auch schreibbar ist. Durch Überladung der Operatoren der beiden Klassen ist ein Zugriff im Format chnl['H']['i'] möglich. Die Entitäten erben von der Basisklasse Entity. Sie überschreiben Methoden um lesend oder schreibend, entweder auf den gesamten Inhalt auf einmal oder Bitweise auf den Inhalt zuzugreifen. Dafür sind die methoden read\_pin, write\_pin beziehungsweise read\_all und write\_all vorgesehen. 
 
+
 \subsection{Laden der Programmlogik aus Datei}
 Das Logikprogramm wurde im nächsten Schritt in eine Textdatei ausgelagert. Sie soll künftig von der grafischen Benutzeroberfläche automatisch erstellt werden können, kann aber nach wie vor auch von Hand erstellt werden. Die Datei enthält einen Ausgang pro Zeile, gefolgt von einem Gleichheitszeichen und den Abhängigkeiten. Zeichen die auf ein Semikolon folgen, werden dabei als Kommentar gewertet und ausgelassen. Sie wird bei Programmstart eingelesen und verbleibt dann im Speicher.  
 \subsubsection{Erneutes Laden der Logik zur Laufzeit}
 Zum erneuten einlesen der Logik, wurde ein Signalhandler vorgesehen, welcher auf das Signal SIGUSR1 hört. Die entsprechende Funktion ließt dann die Logikdaten erneut ein und überschreibt damit die vorherige version im Speicher. Damit muss die Steuerung nicht neu gestartet werden und ermöglicht das Steuerungsprogramm zur Laufzeit zu verändern.
-\subsection{Interrupt}
+
+\subsection{Hauptschleife und Interrupt}
+Das Logikprogramm liegt nun im Speicher und das Programm betritt die Hauptschleife. Doch treibt ein einfaches polling die Auslastung des Prozessors nach oben.   
+
 \subsection{Merker Bausteine}
 \subsection{Timer Bausteine}
 \subsection{WebSockets und Virtuelle Kanäle}
