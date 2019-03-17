@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Bouml (http://bouml.free.fr/) -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="840" height="426" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="248" y="8" width="3" height="405" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="106" y="410" width="145" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="102" y="4" width="146" height="406" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="175" y="15">IO_Channel</text>
+	<line stroke="black" stroke-opacity="1" x1="102" y1="26" x2="248" y2="26" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="37">authorized_sessions</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="57">token</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="77">permission</text>
+	<line stroke="black" stroke-opacity="1" x1="102" y1="88" x2="248" y2="88" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="99">assignIsg()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="119">IO_Channel()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="139">IO_Channel()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="159">IO_Channel()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="179">~IO_Channel()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="199">ge()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="219">operator []()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="239">interrupts_enabled()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="259">wait_for_interrupt()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="279">caching_enable()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="299">caching_disable()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="319">flush()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="339">getPermission()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="359">checkToken()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="379">is_session_autorized()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="106" y="399">add_authorized_session()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="419" y="9" width="3" height="91" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="313" y="97" width="109" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="309" y="5" width="110" height="92" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="364" y="16">IO_Channel_Hw</text>
+	<line stroke="black" stroke-opacity="1" x1="309" y1="27" x2="419" y2="27" />
+	<line stroke="black" stroke-opacity="1" x1="309" y1="35" x2="419" y2="35" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="313" y="46">IO_Channel_Hw()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="313" y="66">IO_Channel_Hw()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="313" y="86">~IO_Channel_Hw()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="596" y="28" width="3" height="91" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="472" y="116" width="127" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="468" y="24" width="128" height="92" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="532" y="35">IO_Channel_Virtual</text>
+	<line stroke="black" stroke-opacity="1" x1="468" y1="46" x2="596" y2="46" />
+	<line stroke="black" stroke-opacity="1" x1="468" y1="54" x2="596" y2="54" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="472" y="65">IO_Channel_Virtual()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="472" y="85">IO_Channel_Virtual()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="472" y="105">~IO_Channel_Virtual()</text>
+</g>
+<g>
+	<line stroke="#000000" stroke-opacity="1" x1="308" y1="92" x2="258" y2="92" />
+	<line stroke="#000000" stroke-opacity="1" x1="252" y1="92" x2="258" y2="98" />
+	<line stroke="#000000" stroke-opacity="1" x1="252" y1="92" x2="258" y2="86" />
+	<line stroke="#000000" stroke-opacity="1" x1="258" y1="98" x2="258" y2="86" />
+</g>
+<g>
+	<line stroke="#000000" stroke-opacity="1" x1="467" y1="111" x2="257" y2="111" />
+	<line stroke="#000000" stroke-opacity="1" x1="252" y1="112" x2="258" y2="117" />
+	<line stroke="#000000" stroke-opacity="1" x1="252" y1="112" x2="257" y2="105" />
+	<line stroke="#000000" stroke-opacity="1" x1="258" y1="117" x2="257" y2="105" />
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="626" y="183" width="3" height="185" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="466" y="365" width="163" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="462" y="179" width="164" height="186" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="544" y="190">IO_Channel_Virtual_Timer</text>
+	<line stroke="black" stroke-opacity="1" x1="462" y1="201" x2="626" y2="201" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="466" y="212">powerOnTimersCfg</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="466" y="232">powerOffTimersCfg</text>
+	<line stroke="black" stroke-opacity="1" x1="462" y1="243" x2="626" y2="243" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="466" y="254">IO_Channel_Virtual_Timer()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="466" y="274">IO_Channel_Virtual_Timer()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="466" y="294">~IO_Channel_Virtual_Timer()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="466" y="314">trigger()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="466" y="334">test()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="466" y="354">setTimersCfg()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="823" y="150" width="3" height="91" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="669" y="238" width="157" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="665" y="146" width="158" height="92" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="744" y="157">IO_Channel_Virtual_Pipe</text>
+	<line stroke="black" stroke-opacity="1" x1="665" y1="168" x2="823" y2="168" />
+	<line stroke="black" stroke-opacity="1" x1="665" y1="176" x2="823" y2="176" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="669" y="187">IO_Channel_Virtual_Pipe()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="669" y="207">IO_Channel_Virtual_Pipe()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="669" y="227">~IO_Channel_Virtual_Pipe()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="824" y="27" width="3" height="91" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="650" y="115" width="177" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="646" y="23" width="178" height="92" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="735" y="34">IO_Channel_Virtual_Memory</text>
+	<line stroke="black" stroke-opacity="1" x1="646" y1="45" x2="824" y2="45" />
+	<line stroke="black" stroke-opacity="1" x1="646" y1="53" x2="824" y2="53" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="650" y="64">IO_Channel_Virtual_Memory()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="650" y="84">IO_Channel_Virtual_Memory()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="650" y="104">~IO_Channel_Virtual_Memory()</text>
+</g>
+<g>
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="442" y="139" width="3" height="231" />
+	<rect fill="#cbcbcb" stroke="none" stroke-opacity="1" x="292" y="367" width="153" height="3" />
+	<rect fill="#ffffc0" stroke="black" stroke-width="1" stroke-opacity="1" x="288" y="135" width="154" height="232" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" font-weight="bold" text-anchor="middle" x="365" y="146">IO_Channel_Hw_PiFace</text>
+	<line stroke="black" stroke-opacity="1" x1="288" y1="157" x2="442" y2="157" />
+	<line stroke="black" stroke-opacity="1" x1="288" y1="165" x2="442" y2="165" />
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="176">init_pfd_object()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="196">IO_Channel_Hw_PiFace()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="216">IO_Channel_Hw_PiFace()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="236">IO_Channel_Hw_PiFace()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="256">~IO_Channel_Hw_PiFace()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="276">interrupts_enabled()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="296">wait_for_interrupt()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="316">caching_enable()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="336">caching_disable()</text>
+	<text font-family="Helvetica" font-size="9" fill="#000000" xml:space="preserve" x="292" y="356">flush()</text>
+</g>
+<g>
+	<line stroke="#000000" stroke-opacity="1" x1="534" y1="178" x2="534" y2="126" />
+	<line stroke="#000000" stroke-opacity="1" x1="534" y1="120" x2="528" y2="126" />
+	<line stroke="#000000" stroke-opacity="1" x1="534" y1="120" x2="540" y2="126" />
+	<line stroke="#000000" stroke-opacity="1" x1="528" y1="126" x2="540" y2="126" />
+</g>
+<g>
+	<line stroke="#000000" stroke-opacity="1" x1="366" y1="134" x2="366" y2="107" />
+	<line stroke="#000000" stroke-opacity="1" x1="366" y1="101" x2="360" y2="107" />
+	<line stroke="#000000" stroke-opacity="1" x1="366" y1="101" x2="372" y2="107" />
+	<line stroke="#000000" stroke-opacity="1" x1="360" y1="107" x2="372" y2="107" />
+</g>
+<g>
+	<line stroke="#000000" stroke-opacity="1" x1="664" y1="147" x2="605" y2="112" />
+	<line stroke="#000000" stroke-opacity="1" x1="600" y1="109" x2="602" y2="117" />
+	<line stroke="#000000" stroke-opacity="1" x1="600" y1="109" x2="608" y2="106" />
+	<line stroke="#000000" stroke-opacity="1" x1="602" y1="117" x2="608" y2="106" />
+</g>
+<g>
+	<line stroke="#000000" stroke-opacity="1" x1="645" y1="71" x2="606" y2="71" />
+	<line stroke="#000000" stroke-opacity="1" x1="600" y1="71" x2="606" y2="77" />
+	<line stroke="#000000" stroke-opacity="1" x1="600" y1="71" x2="606" y2="65" />
+	<line stroke="#000000" stroke-opacity="1" x1="606" y1="77" x2="606" y2="65" />
+</g>
+</svg>
