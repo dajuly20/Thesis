@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="430"
+   height="280"
+   id="svg116"
+   sodipodi:docname="circuitverseLogic.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata120">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     id="namedview118"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.1291866"
+     inkscape:cx="373.42698"
+     inkscape:cy="-27.331917"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg116" />
+  <defs
+     id="defs2" />
+  <g
+     id="g114">
+    <rect
+       x="0"
+       y="0"
+       width="430"
+       height="280"
+       id="rect4"
+       style="fill:#ffffff;stroke:none" />
+    <path
+       d="m 230.5,50.5 h 10 v 0 a 20,20 0 0 1 0,40 h -10 z"
+       stroke-miterlimit="10"
+       id="path6"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="m 140.5,100.5 20,10 -20,10 z"
+       stroke-miterlimit="10"
+       id="path8"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="m 170,110 a 5,5 0 1 1 0,-0.005"
+       stroke-miterlimit="10"
+       id="path10"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       id="path12"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="14px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="390"
+       y="225"
+       dominant-baseline="alphabetic"
+       id="text14"
+       style="font-style:normal;font-weight:normal;font-size:14px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">[Ho0]</text>
+    <path
+       d="m 360.5,210.5 h 20 v 20 h -20 z"
+       stroke-miterlimit="10"
+       id="path16"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#0000ff;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       id="path18"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="20px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="370"
+       y="225"
+       dominant-baseline="alphabetic"
+       id="text20"
+       style="font-style:normal;font-weight:normal;font-size:20px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:middle;fill:#008000;stroke:none">1</text>
+    <path
+       id="path22"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="14px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="380"
+       y="75"
+       dominant-baseline="alphabetic"
+       id="text24"
+       style="font-style:normal;font-weight:normal;font-size:14px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;stroke:none">[Tt0]</text>
+    <path
+       d="m 350.5,60.5 h 20 v 20 h -20 z"
+       stroke-miterlimit="10"
+       id="path26"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#0000ff;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       id="path28"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="20px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="360"
+       y="75"
+       dominant-baseline="alphabetic"
+       id="text30"
+       style="font-style:normal;font-weight:normal;font-size:20px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:middle;fill:#008000;stroke:none">0</text>
+    <path
+       d="m 50.5,60.5 h 20 v 20 h -20 z"
+       stroke-miterlimit="10"
+       id="path32"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       id="path34"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="14px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="40"
+       y="75"
+       dominant-baseline="alphabetic"
+       id="text36"
+       style="font-style:normal;font-weight:normal;font-size:14px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:end;fill:#000000;stroke:none">[Hi0]</text>
+    <path
+       id="path38"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <path
+       id="path40"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="20px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="60"
+       y="75"
+       dominant-baseline="alphabetic"
+       id="text42"
+       style="font-style:normal;font-weight:normal;font-size:20px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:middle;fill:#008000;stroke:none">1</text>
+    <path
+       d="m 50.5,100.5 h 20 v 20 h -20 z"
+       stroke-miterlimit="10"
+       id="path44"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       id="path46"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="14px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="40"
+       y="115"
+       dominant-baseline="alphabetic"
+       id="text48"
+       style="font-style:normal;font-weight:normal;font-size:14px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:end;fill:#000000;stroke:none">[Hi1]</text>
+    <path
+       id="path50"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <path
+       id="path52"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="20px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="60"
+       y="115"
+       dominant-baseline="alphabetic"
+       id="text54"
+       style="font-style:normal;font-weight:normal;font-size:20px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:middle;fill:#008000;stroke:none">1</text>
+    <path
+       d="m 60.5,200.5 h 20 v 20 h -20 z"
+       stroke-miterlimit="10"
+       id="path56"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       id="path58"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="14px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="50"
+       y="215"
+       dominant-baseline="alphabetic"
+       id="text60"
+       style="font-style:normal;font-weight:normal;font-size:14px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:end;fill:#000000;stroke:none">[To0]</text>
+    <path
+       id="path62"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <path
+       id="path64"
+       d=""
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none" />
+    <text
+       font-size="20px"
+       font-style="normal"
+       font-weight="normal"
+       text-decoration="normal"
+       x="70"
+       y="215"
+       dominant-baseline="alphabetic"
+       id="text66"
+       style="font-style:normal;font-weight:normal;font-size:20px;font-family:Georgia;dominant-baseline:alphabetic;text-anchor:middle;fill:#008000;stroke:none">1</text>
+    <path
+       d="M 70.5,70 V 60"
+       stroke-miterlimit="10"
+       id="path68"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#00ff00;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="M 360.5,220 V 210"
+       stroke-miterlimit="10"
+       id="path70"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#00ff00;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="M 230,60.5 H 70"
+       stroke-miterlimit="10"
+       id="path72"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#00ff00;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="m 230.5,80 v 30"
+       stroke-miterlimit="10"
+       id="path74"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#006400;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="m 260,70.5 h 90"
+       stroke-miterlimit="10"
+       id="path76"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#006400;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="M 230,110.5 H 170"
+       stroke-miterlimit="10"
+       id="path78"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#006400;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="M 350.5,70 V 80"
+       stroke-miterlimit="10"
+       id="path80"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#006400;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="M 80,210.5 H 360"
+       stroke-miterlimit="10"
+       id="path82"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#00ff00;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="M 140,110.5 H 70"
+       stroke-miterlimit="10"
+       id="path84"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#00ff00;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none;paint-order:fill stroke markers" />
+    <path
+       d="m 73,70 a 3,3 0 1 1 -10e-7,-0.003 z"
+       id="path86"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 363,220 a 3,3 0 1 1 0,-0.003 z"
+       id="path88"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 233,60 a 3,3 0 1 1 0,-0.003 z"
+       id="path90"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 233,80 a 3,3 0 1 1 0,-0.003 z"
+       id="path92"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 263,70 a 3,3 0 1 1 0,-0.003 z"
+       id="path94"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 73,60 a 3,3 0 1 1 -10e-7,-0.003 z"
+       id="path96"
+       inkscape:connector-curvature="0"
+       style="fill:#90ee90;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 233,110 a 3,3 0 1 1 0,-0.003 z"
+       id="path98"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 73,110 a 3,3 0 1 1 -10e-7,-0.003 z"
+       id="path100"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 353,70 a 3,3 0 1 1 0,-0.003 z"
+       id="path102"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 83,210 a 3,3 0 1 1 -10e-7,-0.003 z"
+       id="path104"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 363,210 a 3,3 0 1 1 0,-0.003 z"
+       id="path106"
+       inkscape:connector-curvature="0"
+       style="fill:#90ee90;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 353,80 a 3,3 0 1 1 0,-0.003 z"
+       id="path108"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 143,110 a 3,3 0 1 1 0,-0.003 z"
+       id="path110"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+    <path
+       d="m 173,110 a 3,3 0 1 1 0,-0.003 z"
+       id="path112"
+       inkscape:connector-curvature="0"
+       style="fill:#008000;stroke:none;paint-order:stroke fill markers" />
+  </g>
+</svg>

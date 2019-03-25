@@ -116,8 +116,7 @@ Die eigentliche Anwendung ist Hauptsächlich in HTML und JavaScript und wird im 
 \subsubsection{Apache Webserver}
 \subsubsection{JavaScript Anwendung}
 \subsubsection{Erweiterung CircuitVerse}
-Die Wahl für einen Graphischen Logikeditor fiel auf den mit MIT Lizenz gekennzeichneten Editor CircuitVerse. Die Lizenzierung gestattet es, das Programm zu verändern und weiter zu verbreiten. Eine Erweiterung ist vor allem nötig, um die gezeichnete Logikschaltung in ein Format umwandeln zu können, welches vom Backend verstanden wird. Wie in *REF* beschrieben, bildet in diesem Format jeder verwendete Ausgang eine Zeile. CircuitVerse arbeitet hingegen mit Knoten, welche die gezeichnete Logikschaltung abbilden. Diese werden in Ausgangsknoten, Eingangsknoten und Verbindungsknoten unterschieden. Dabei müssen drei verschiedene Bausteine betrachtet werden. Eingangsbausteine bilden das eine Ende der Schaltung, wärend Ausgangsbausteine das andere Ende bilden. Dazwischen können Logikgatter geschaltet werden, die ihrerseits Eingangs und Ausgangsknoten besitzen. Für die Umwandlung schien es am sinnvollsten an einem Ausgang anzusetzen und eine Wegfindung durchzuführen, welche beim Erreichen eines Eingangsbausteins einen Endpunkt hat. Dazu geht ein Rekursiver Algorithmus den Weg von einem Ausgang bis zu einem Eingang. Ist ein Eingang erreicht, so wird geprüft ob es sich um den Ausgang eines Eingangsbausteins handelt, oder um den Ausgang eines Logikgatters. Im zweiten Falle, wird im entsprechenden Logikgatter nach den Anschlussknoten der Eingänge gesucht, welche dann widerum Rekursiv verfolgt werden, bis ein ein weiterer Eingangsknoten erreicht wird welcher vom Typ Eingangsbaustein ist. Dabei werden alle Einzelwerte der Entsprechenden Wege, je nach Art des gefundenen Gatters zusammengeführt. Im Falle eines Und-Gatters wäre dies die Verbindung der einzelnen Zeichenketten mit einem Kaufmännischen Und-Zeichen \texttt{\&}.
-Die in \autoref{img:circuitVerseBasic} Abgebildete Logikschaltung, wird intern durch Knoten abgebildet. Ein Knoten ist entweder vom Typ Eingang, Ausgang oder Verbindung. 
+Die Wahl für einen Graphischen Logikeditor fiel auf den mit der MIT Lizenz gekennzeichneten Editor CircuitVerse *REF*. Die Lizenzierung gestattet es, das Programm zu verändern und weiter zu verbreiten. Der in \autoref{img:circuitVerseBasic} gezeigte Screenshot, zeigt den Aufbau des Editors. Im linken Abschnitt kann dabei zwischen verschiedenen Bauteilen gewählt werden, welche dann per Drag \& Drop auf die rechts daneben befindliche Zeichenfläche gezogen werden können. Grüne Punkte kennzeichnen dabei die Anschlussknoten, welche dann wiederum durch ziehen mit gehaltener linker Maustaste miteinander verbunden werden können. CircuitVerse bietet überdies die Möglichkeit, die erstellte Zeichnung in einem eigenen Format zu  speichern, sowie sie als Grafik zu exportieren. Des weiteren gibt es die Möglichkeit eine Zeichnung anhand einer Logiktabelle automatisch erstellen zu lassen. 
 
 \begin{figure}[H]
 	\begin{center}
@@ -126,6 +125,36 @@ Die in \autoref{img:circuitVerseBasic} Abgebildete Logikschaltung, wird intern d
 		\label{img:circuitVerseBasic}
 	\end{center} 
 \end{figure}	
+
+ Eine Erweiterung von CircuitVerse ist nötig, um die gezeichnete Logikschaltung in ein Format umwandeln zu können, welches vom Backend verstanden wird. Weiterhin muss das Benamsungsschema (siehe \chpref{kap:ums:banamsung}) eingebracht werden. Letztlich muss auch die Bauteile-Auswahl auf jene Bauteile reduziert werden, welche auch tatsächlich in der Steuerung verfügbar sind. Kapitel \chpref{kap:ums:logicOutsource} beschriebt das Format der Datei, die letztlich aus einer gezeichneten Logikschaltung gewonnen werden soll. CircuitVerse arbeitet hingegen mit Knoten, welche die gezeichnete Logikschaltung abbilden. \autoref{img:circuitVerseNodes} verdeutlicht, wie CircuitVerse die Knoten verwendet und kennzeichnet die Knotennummern. In \ref{img:circuitVerseJson} ist zugehörige JSON-Datenstruktur abgebildet. Zu sehen ist hier, dass jeder Knoten die Information bereit stellt, mit welchen anderen Knoten er verbunden ist. 
+ 
+ Dabei sind die Knoten in drei Arten gegliedert: Ausgangsknoten, Eingangsknoten und Verbindungsknoten. Diese Knoten gehören zu Bauteilen wie Gattern, Eingangsbausteinen oder Ausgangsbausteinen. Die Anordnung der Knoten ist logischer weise anders herum wie die der Bauteile, so besitzt ein Ausgangsbaustein genau einen Eingangsknoten (z.B. \autoref{img:circuitVerseNodes} Knoten 7), sowie ein Eingangsbaustein über einen Ausgangsknoten verfügt (z.B. \autoref{img:circuitVerseNodes} Knoten 9). Ein Gatter hingegen hat einen Ausgangsknoten sowie einen oder mehrere Eingangsknoten. (z.B. \autoref{img:circuitVerseNodes} Eingangssknoten 3,4 und Ausgangsknoten 4) Für die Umwandlung in Textform schien es am sinnvollsten an einem Ausgang anzusetzen und eine Wegfindung durchzuführen, welche beim Erreichen eines Eingangsbausteins einen Endpunkt hat. Dazu geht ein Rekursiver Algorithmus den Weg von einem Ausgangsknoten bis zu einem Eingangsknoten. Ist ein Eingangsknoten erreicht, so wird geprüft ob es sich um den Ausgang eines Eingangsbausteins handelt, oder um den Ausgang eines Logikgatters. Da CircuitVerse die Knoten jedoch nicht nach der Art des zugehörigen Bauteils, sondern nur in Eingangsknoten Ausgangsknoten oder Leitungsknoten unterteilt, muss die in \ref{img:circuitVerseJson} gezeigte Struktur oberhalb der Eigenschaft \texttt{allNodes} vorab durchlaufen werden. Hierbei wird ein Lookup Array angelegt, welches die Bauteile mit der Knotennummer ihres Ausgangs indiziert. Bezogen auf das in \ref{img:circuitVerseNodes} gezeigte Beispiel, würde für das gezeigte AND-Gate ein Eintrag mit dem Index 4 angelegt, welcher dann Informationen über die Art des Logikgatters sowie ein Array der Anschließenden Eingangsknoten enthält. 
+ 
+ Der Algorithmus verarbeitet zuerst die in \ref{img:circuitVerseJson} gezeigte Eigenschaft \texttt{Outputs}, welche für jeden Ausgangsbaustein einen Eingangsknoten enthält. Bezogen auf das in \ref{img:circuitVerseNodes} gezeigte Beispiel, würde mit dem Ausgang \texttt{[Ho0]} und dem Zugehörigen Eingangsknoten \texttt{1} begonnen. In \autoref{img:circuitVerseJson} unter \texttt{AllNodes} ist dieser Knoten mit seiner Knotennummer \texttt{1} angelegt. Hierbei sind vor allem zwei Untereigenschaften genauer zu betrachten. Zum einen verrät die Eigenschaft \texttt{type}, ob es sich um einen Eingangsknoten (\texttt{1}), einen Ausgangsknoten \texttt{0} oder einen Leitungsknoten (\texttt{2}) handelt. Zum anderen bietet das Array \texttt{connections} am Ende der Zeile Aufschluss über die Verbundenen Knoten. Der Algorithmus würde nun, da es sich bei dem Knoten \texttt{1} um einen Ausgangsknoten (Typ 1) handelt, die in \texttt{connections} aufgeführten Knoten durchlaufen. 
+ 
+  Zusätzlich muss festgehalten werden,  In der Regel reduziert sich die Anzahl der Anschließenden Knoten auf eins, sobald 
+ 
+ Im zweiten Falle, wird im entsprechenden Logikgatter nach den Anschlussknoten der Eingänge gesucht, welche dann wiederum Rekursiv verfolgt werden, bis ein weiterer Eingangsknoten erreicht wird welcher vom Typ Eingangsbaustein ist. An jedem solchen Endpunkt, wird der Name des Eingangs als Zeichenkette zurückgegeben. Angenommen das vorgeschaltete Bauteil wäre ein Und-Gatter müsste dies nun nichts weiter tun muss als die beiden Teilergebnisse mittels \texttt{\&} zu verketten und die gesamte Zeichenkette als Gesamtergebnis zurückzugeben. Durch diese Vorgehensweise kann die Verschaltung beliebig komplex erfolgen. 
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.65\textwidth ,clip]{./images/circuitverseLogicNodes.pdf}
+		\caption{Logikschaltung mit gekennzeichneten Knoten}
+		\label{img:circuitVerseNodes}
+	\end{center} 
+\end{figure}	
+
+
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.65\textwidth ,clip]{./images/circuitverseLogicJson.png}
+		\caption{Darstellung der JSON Datenstruktur}
+		\label{img:circuitVerseJson}
+	\end{center} 
+\end{figure}	
+
+Die in \autoref{img:circuitVerseBasic} Abgebildete Logikschaltung, wird intern durch Knoten abgebildet. Ein Knoten ist entweder vom Typ Eingang, Ausgang oder Verbindung. 
+
 
 
 
