@@ -108,12 +108,30 @@ Zudem wird dem Bezeichner in diesem Zuge ein Wert zugewiesen. Um diesen zu erhal
 	\caption{Logik Engine}
 	\label{code:logicEngine}
 \end{listing}
-\subsection{WebSocket Server}
+\subsection{WebSocket Server}\label{chp:ums:websockserver}
+Um die Steuerung mit der Außenwelt zu Verbinden wurde ein WebSocket (siehe \ref{chp:grdlgn:webSocket}) Server in das Backend integriert. Wenn ein Client eine Verbindung aufgebaut hat, wird die Session in Array aufgenommen. Trennt der Client die Verbindung oder die Verbindung wird zum Beispiel aufgrund von einer Zeitüberschreitung automatisch getrennt, wird der entsprechende Client wieder aus diesem Array entfernt. Jeder Client in diesem Array bekommt ein Update, sobald aufgrund einer Änderung an einem Eingang oder aus einem anderen Grund *REF* eine Iteration ausgelöst wird. Ein schreibender Zugriff ist hierbei nur möglich, falls der Client sich vorher durch Übermittlung eines Tokens für das Schreiben auf diese Ausgangsressource authentifiziert hat.  
+
 \subsection{Benutzeroberfläche}
 \todo{Grafik Erstellen}
+ \begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.75\textwidth ,clip]{./images/IFTTT.pdf}
+		\caption{Zugriff auf die Weboberfläche}
+		\label{img:externalAccess}
+	\end{center} 
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.9\textwidth ,clip]{./images/BackendFrontend.pdf}
+		\caption{Networking Übersicht}
+		\label{img:externalNetworking}
+	\end{center} 
 \subsubsection{Übersicht Komponenten}
 Die eigentliche Anwendung ist Hauptsächlich in HTML und JavaScript und wird im Browser des Benutzers ausgeführt. Um die Benutzeroberfläche mit dem Rest der Anwendung kommunizieren zu lassen, bedarf es mehrerer Komponenten. Obwohl der Hauptteil der Anwendung über JavaScript Websockets eine direkte Verbindung vom Browser zum Backend herstellt, wird als direkte Schnittstelle zum Browser ein Apache2 Webserver eingesetzt. Dieser wird um das Proxy-Modul modproxy erweitert was es ermöglicht an das Backend gerichtete Anfragen mit dem WebSocket Header auf die lokale loopback Adresse \texttt{127.0.0.1} weiterzuleiten, während alle sonstigen Anfragen vom Webserver direkt beantwortet werden können. Zum einen wird hierdurhc die Konfiguration von Verschlüsselten Verbindungen über SSL und den Abruf der dazu nötigen Zertifikate erheblich vereinfacht, denn einige Zertifizierungs-Anbieter wie zum Beispiel Let's Encrypt *REF* bieten extra auf Apache zugeschnittene Scripte, die ebendies fast vollständig Automatisieren. Zum anderen ist es so möglich die Auslieferung der HTML und JavaScript Quellen an den Webserver zu delegieren, anstatt bei einer eigenen Implementierung Sicherheitslücken und Performance-Probleme zu riskieren. Weiterhin ermöglicht es dieser Ansatz auch PHP Scripte zu verarbeiten, dies wird zum Beispiel eingesetzt um Konfigurationsdateien vom Browser auf dem Server abzulegen, oder durch dem Backend Signale zu senden wenn es die Logikdatei erneut einlesen soll.
 \subsubsection{Apache Webserver}
+
+\end{figure}
 \subsubsection{JavaScript Anwendung}
 \subsubsection{Logik Editor CircuitVerse}
 Die Wahl für einen Graphischen Logikeditor fiel auf den mit der MIT Lizenz gekennzeichneten Editor CircuitVerse *REF*. Die Lizenzierung gestattet es, das Programm zu verändern und weiter zu verbreiten. Der in \autoref{img:circuitVerseBasic} gezeigte Screenshot, zeigt den Aufbau des Editors. Im linken Abschnitt kann dabei zwischen verschiedenen Bauteilen gewählt werden, welche dann per Drag \& Drop auf die rechts daneben befindliche Zeichenfläche gezogen werden können. Grüne Punkte kennzeichnen dabei die Anschlussknoten, welche dann wiederum durch ziehen mit gehaltener linker Maustaste miteinander verbunden werden können. CircuitVerse bietet überdies die Möglichkeit, die erstellte Zeichnung in einem eigenen Format zu  speichern, sowie sie als Grafik zu exportieren. Des weiteren gibt es die Möglichkeit eine Zeichnung anhand einer Logiktabelle automatisch erstellen zu lassen. 
@@ -126,6 +144,7 @@ Die Wahl für einen Graphischen Logikeditor fiel auf den mit der MIT Lizenz geke
 	\end{center} 
 \end{figure}	
 
+\paragraph{Erweiterung für den Export}\label{par:erw}
  Eine Erweiterung von CircuitVerse ist nötig, um die gezeichnete Logikschaltung in ein Format umwandeln zu können, welches vom Backend verstanden wird. Weiterhin muss das Benamsungsschema (siehe \chpref{kap:ums:banamsung}) eingebracht werden. Letztlich muss auch die Bauteile-Auswahl auf jene Bauteile reduziert werden, welche auch tatsächlich in der Steuerung verfügbar sind. \chpref{kap:ums:logicOutsource} beschriebt das Format der Datei, die letztlich aus einer gezeichneten Logikschaltung gewonnen werden soll. CircuitVerse verwendet für die Speicherung der Schaltung eine JSON-Struktur. Dabei wird in Bauteile und Knoten unterschieden. Ein Bauteil hat ein oder mehrere Knoten. Wobei Knoten miteinander verbunden werden können, und dann jeweils Informationen über angeschlossene Knoten enthalten. \autoref{img:circuitVerseNodes} verdeutlicht, wie CircuitVerse die Knoten verwendet. Die Grundlage für die Abbildung ist ein Grafikexport von CircuitVerse, wobei die Knotennummern zum besseren Verständnis der Funktionsweise besonders gekennzeichnet wurden. In \chphl{ \autoref{img:circuitVerseJson} \nameref{img:circuitVerseJson}}ist die zugehörige JSON-Datenstruktur abgebildet.
  \begin{figure}[H]
  	\begin{center}
@@ -144,7 +163,7 @@ Die Wahl für einen Graphischen Logikeditor fiel auf den mit der MIT Lizenz geke
  \end{figure}	
  
  
- In der vorangehenden Abbildung \ref{img:circuitVerseNodes} ist zu sehen, dass jedes Bauteil einen oder mehrere Knoten Besitzt. In \autoref{img:circuitVerseJson} ist zu sehen, dass jeder dieser Knoten eine eigene Zeile unterhalb von \texttt{allNodes} besitzt. Hieraus geht hervor, mit welchen anderen Knoten er verbunden ist. Außerdem verbirgt sich im Feld \texttt{Typ}, die Information ob es sich um einen Ausgangsknoten einen Eingangsknoten oder einen Verbindungsknoten handelt. Ist der Knoten vom Typ Eingangknoten oder vom Typ Ausgangsknoten so gehört er einem Bauteil wie einem Logikgatter, einem Eingangsbausteinen oder einem Ausgangsbausteinen. Die Anordnung der Knoten ist logischer weise anders herum wie die der Bauteile, so besitzt ein Ausgangsbaustein genau einen Eingangsknoten (z.B.  \ref{img:circuitVerseNodes} Knoten 1), sowie ein Eingangsbaustein über einen Ausgangsknoten verfügt (z.B. \autoref{img:circuitVerseNodes} Knoten 9). Ein Gatter hingegen hat einen Ausgangsknoten sowie einen oder mehrere Eingangsknoten. (z.B. \autoref{img:circuitVerseNodes} Eingangssknoten 3,4 und Ausgangsknoten 4) Für die Umwandlung in Textform schien es am sinnvollsten an einem Ausgang anzusetzen und eine Wegfindung durchzuführen, welche beim Erreichen eines Eingangsbausteins einen Endpunkt hat. Dazu geht ein Rekursiver Algorithmus den Weg von einem Ausgangsknoten bis zu einem Eingangsknoten. Ist ein Eingangsknoten erreicht, so wird geprüft ob es sich um den Ausgang eines Eingangsbausteins handelt, oder um den Ausgang eines Logikgatters. Da CircuitVerse die Knoten jedoch nicht nach der Art des zugehörigen Bauteils, sondern nur in Eingangsknoten Ausgangsknoten oder Leitungsknoten unterteilt, muss die in \ref{img:circuitVerseJson} gezeigte Struktur oberhalb der Eigenschaft \texttt{allNodes} vorab durchlaufen werden. Hierbei wird ein Lookup Array angelegt (siehe \autoref{img:circuitVerseLookup}), welches die Bauteile mit der Knotennummer ihres Ausgangs indiziert. Bezogen auf das in \autoref{img:circuitVerseNodes} gezeigte Beispiel, würde für das AND-Gate ein Eintrag mit dem Index 4 angelegt. \autoref{img:circuitVerseLookup} Zeigt den Eintrag für dieses AND-Gate in der aufgeklappten Zeile mit dem Index vier. Das Array \texttt{nodesIn} beinhaltet die Knoten 2 und 3. An diesem Punkt, ruft die Funktion zur Wegfindung sich nun selbst auf. Auf diese weise werden sämtliche Logikgatter durchlaufen. In diesem Beispiel (siehe \autoref{img:circuitVerseNodes}) würde die Wegfindung von Knoten 2 über Knoten 5 auf Knoten 0 Treffen. Dieser ist jedoch kein Gateknoten sondern der Knoten eines Eingangsbausteines: Ein Endpunkt ist erreicht, das heißt es wird nun die Zeichenkette \texttt{[Hi0]} zurückgegeben. Zurück im vorher besprochenen AND-Gate, wird diese Zeichenkette nun mit dem Rückgabewert des Stranges an Knoten 3 und einem Kaufmännischen und (\&) verkettet. Da das And Gate genau zwei Eingangsknoten hat, sind nunmehr alle Knoten abgearbeitet und der Baustein gibt die Zeichenkette \texttt{[Hi0] \& ![Hi1]} zurück. Im Eingangsknoten wird diese Zeichenkette nun um den Bezeichner ergänzt.  Somit ergibt sich \texttt{[Tt0]=[Hi0] \& ![Hi1]} als Gesamtergebnis. 
+ In der vorangehenden Abbildung \ref{img:circuitVerseNodes} ist zu sehen, dass jedes Bauteil einen oder mehrere Knoten Besitzt. In \autoref{img:circuitVerseJson} ist zu sehen, dass jeder dieser Knoten eine eigene Zeile unterhalb von \texttt{allNodes} besitzt. Hieraus geht hervor, mit welchen anderen Knoten er verbunden ist. Außerdem verbirgt sich im Feld \texttt{Typ}, die Information ob es sich um einen Ausgangsknoten einen Eingangsknoten oder einen Verbindungsknoten handelt. Ist der Knoten vom Typ Eingangknoten oder vom Typ Ausgangsknoten so gehört er einem Bauteil wie einem Logikgatter, einem Eingangsbausteinen oder einem Ausgangsbausteinen. Die Anordnung der Knoten ist logischer weise anders herum wie die der Bauteile, so besitzt ein Ausgangsbaustein genau einen Eingangsknoten (z.B.  \ref{img:circuitVerseNodes} Knoten 1), sowie ein Eingangsbaustein über einen Ausgangsknoten verfügt (z.B. \autoref{img:circuitVerseNodes} Knoten 9). Ein Gatter hingegen hat einen Ausgangsknoten sowie einen oder mehrere Eingangsknoten. (z.B. \autoref{img:circuitVerseNodes} Eingangssknoten 3,4 und Ausgangsknoten 4) Für die Umwandlung in Textform schien es am sinnvollsten an einem Ausgang anzusetzen und eine Wegfindung durchzuführen, welche beim Erreichen eines Eingangsbausteins einen Endpunkt hat. Dazu durchläuft der in \autoref{img:circuitVersePAP} gezeigte rekursive Algorithmus den Weg von einem Ausgangsknoten bis zu einem Eingangsknoten. Ist ein Eingangsknoten erreicht, so wird geprüft ob es sich um den Ausgang eines Eingangsbausteins handelt, oder um den Ausgang eines Logikgatters. Da CircuitVerse die Knoten jedoch nicht nach der Art des zugehörigen Bauteils, sondern nur in Eingangsknoten Ausgangsknoten oder Leitungsknoten unterteilt, muss die in \ref{img:circuitVerseJson} gezeigte Struktur oberhalb der Eigenschaft \texttt{allNodes} vorab durchlaufen werden. Hierbei wird ein Lookup Array angelegt (siehe \autoref{img:circuitVerseLookup}), welches die Bauteile mit der Knotennummer ihres Ausgangs indiziert. Bezogen auf das in \autoref{img:circuitVerseNodes} gezeigte Beispiel, würde für das AND-Gate ein Eintrag mit dem Index 4 angelegt. \autoref{img:circuitVerseLookup} Zeigt den Eintrag für dieses AND-Gate in der aufgeklappten Zeile mit dem Index \texttt{4}. Das Array \texttt{nodesIn} beinhaltet die Knoten 2 und 3. An diesem Punkt, ruft die Funktion zur Wegfindung sich nun selbst auf. Auf diese weise werden sämtliche Logikgatter durchlaufen. In diesem Beispiel (siehe \autoref{img:circuitVerseNodes}) würde die Wegfindung von Knoten 2 über Knoten 5 auf Knoten 0 Treffen. Dieser ist jedoch kein Gateknoten sondern der Knoten eines Eingangsbausteines: Ein Endpunkt ist erreicht, das heißt es wird nun die Zeichenkette \texttt{[Hi0]} zurückgegeben. Zurück im vorher besprochenen AND-Gate, wird diese Zeichenkette nun mit dem Rückgabewert des Stranges an Knoten 3 und einem Kaufmännischen und (\&) verkettet. Da das And Gate genau zwei Eingangsknoten hat, sind nunmehr alle Knoten abgearbeitet und der Baustein gibt die Zeichenkette \texttt{[Hi0] \& ![Hi1]} zurück. Im Eingangsknoten wird diese Zeichenkette nun um den Bezeichner ergänzt.  Somit ergibt sich \texttt{[Tt0]=[Hi0] \& ![Hi1]} als Gesamtergebnis. 
   \begin{figure}[H]
  	\begin{center}
  		\includegraphics[width=0.65\textwidth ,clip]{./images/circuitverseLookup.png}
@@ -152,7 +171,6 @@ Die Wahl für einen Graphischen Logikeditor fiel auf den mit der MIT Lizenz geke
  		\label{img:circuitVerseLookup}
  	\end{center} 
  \end{figure}	
- 
  
    \begin{figure}[H]
  	\begin{center}
@@ -162,22 +180,42 @@ Die Wahl für einen Graphischen Logikeditor fiel auf den mit der MIT Lizenz geke
  	\end{center} 
  \end{figure}
  
+ \paragraph {Anpassung der Eingangsbausteine}
  
- Der Algorithmus verarbeitet zuerst die in \ref{img:circuitVerseJson} gezeigte Eigenschaft \texttt{Outputs}, welche für jeden Ausgangsbaustein einen Eingangsknoten enthält. Bezogen auf das in \ref{img:circuitVerseNodes} gezeigte Beispiel, würde mit dem Ausgang \texttt{[Ho0]} und dem Zugehörigen Eingangsknoten \texttt{1} begonnen. In \autoref{img:circuitVerseJson} unter \texttt{AllNodes} ist dieser Knoten mit seiner Knotennummer \texttt{1} angelegt. Hierbei sind vor allem zwei Untereigenschaften genauer zu betrachten. Zum einen verrät die Eigenschaft \texttt{type}, ob es sich um einen Eingangsknoten (\texttt{1}), einen Ausgangsknoten \texttt{0} oder einen Leitungsknoten (\texttt{2}) handelt. Zum anderen bietet das Array \texttt{connections} am Ende der Zeile Aufschluss über die Verbundenen Knoten. Der Algorithmus würde nun, da es sich bei dem Knoten \texttt{1} um einen Ausgangsknoten (Typ 1) handelt, die in \texttt{connections} aufgeführten Knoten durchlaufen. 
- 
-  Zusätzlich muss festgehalten werden,  In der Regel reduziert sich die Anzahl der Anschließenden Knoten auf eins, sobald 
- 
- Im zweiten Falle, wird im entsprechenden Logikgatter nach den Anschlussknoten der Eingänge gesucht, welche dann wiederum Rekursiv verfolgt werden, bis ein weiterer Eingangsknoten erreicht wird welcher vom Typ Eingangsbaustein ist. An jedem solchen Endpunkt, wird der Name des Eingangs als Zeichenkette zurückgegeben. Angenommen das vorgeschaltete Bauteil wäre ein Und-Gatter müsste dies nun nichts weiter tun muss als die beiden Teilergebnisse mittels \texttt{\&} zu verketten und die gesamte Zeichenkette als Gesamtergebnis zurückzugeben. Durch diese Vorgehensweise kann die Verschaltung beliebig komplex erfolgen. 
+ Wie in \chphl{\ref{par:erw} \nameref{par:erw}} besprochen, wurde CircuitVerse um einen Algorithmus zum Export der gezeichneten Schaltung erweitert. Dieser wird über einen neuen Menüpunkt (siehe \ref{img:circuitVerseBright}) gestartet und zeigt dann wie in \autoref{img:circuitVerseBrightPrompt} zu sehen, das Exportergebnis zur Überprüfung an. Nach der Bestätigung des Ergebnisses wird dieses per Ajax Aufruf an ein in \autoref{kap:ums:adapterphp} näher beschriebenes PHP Script übergeben, welches es dann als Textdatei speichert. Der Menüpunkt \texttt{Save Online} schreibt das bisherig verwendete JSON Format über die selbe Schnittstelle in eine weitere Textdatei auf dem Server. Dabei wird zudem eine Abbildung der Schaltung erzeugt und ebenfalls auf den Server übertragen. Letztlich dient die Schnittstelle auch dem lesenden Zugriff auf die JSON-Datei. Sie wird beim ersten Aufruf des Logikeditors somit vom Server heruntergeladen. Damit kann die bereits vorhandene Steuerung erweitert oder verändert werden. Um zu vermeiden dass sich die Logik in der JSON Datei von der Logik in der vom Backend lesbaren Logikdatei unterscheidet, soll die Speicherung in einen Menüpunkt zusammengeführt werden. Dies dient vor allem auch dem einfacheren Verständnis durch den Endbenutzer. Es schränkt jedoch die Möglichkeit ein, neben der Steuerung die gerade \gqq{in Betrieb} ist, weitere alternative Steuerungsprogramme abzuspeichern.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.75\textwidth ,clip]{./images/circuitverseLogicBright.png}
+		\caption{Umgestatletes CircuitVerse}
+		\label{img:circuitVerseBright}
+	\end{center} 
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.75\textwidth ,clip]{./images/circuitverseLogicBrightPrompt.png}
+		\caption{Dialog mit Exportergebnis}
+		\label{img:circuitVerseBrightPrompt}
+	\end{center} 
+\end{figure}
 
 
 
 
-Die in \autoref{img:circuitVerseBasic} Abgebildete Logikschaltung, wird intern durch Knoten abgebildet. Ein Knoten ist entweder vom Typ Eingang, Ausgang oder Verbindung. 
+\subsubsection{PHP Adapter Programme}\label{kap:ums:adapterphp}
+\paragraph{Schnittstelle zum Speichern als Datei}\label{par:saveFile}
+Da CiruitVerse als JavaScript Anwendung im Browser ausgeführt wird und somit keinen direkten Zugriff auf das Dateisystem des Servers hat, ruft es beim Speichern oder beim Laden per Ajax eine URL auf. Um Dateien nun persistent in das Dateisystem des Servers ablegen zu können wird eine API Schnittstelle benötigt, welche über ein rudimentäres PHP-Skript \texttt{logicUpdateApi} realisiert wurde. 
+Dies geschieht über ein anderes PHP Skript, welches  ebenfalls über eine Ajax Anfrage angesprochen wird. Außerdem ließt dieses Script ebendiese Datei, wenn es beim Laden dieser CircuitVerse Version über JavaScript mittels Ajax aufgerufen wird. Zwischen lesendem und schreibendem Zugriff wird über die Verwendete Zugriffsmethode unterschieden, wobei \texttt{POST} einen schreibenden Zugriff gewährt und \texttt{GET} den Inhalt der Datei ließt. Da der Logikeditor in ein Helles Template eingebettet werden soll, wurde außerdem das Farbschema und die Schriftart modifiziert. 
+
+\paragraph{WebSocket Adapter}
+Das im letzen Abschnitt \ref {par:saveFile} beschrieben Verfahren zum Ablegen von Konfigurationsdaten ist ein einmaliges Ereignis, dementsprechend wird hier auch eine normale HTTP Anfrage eingesetzt, welche nach vollständiger Übertragung abgebaut wird. Im Unterschied dazu wird für die Ansteuerung der Virtuellen Kanäle sowie für die Statusabfrage der Phsyikalischen ein und Ausgänge eine persistente Verbindung aufgebaut. Dabei baut der Client eine Verbindung zu dem WebSocker Server auf welcher in Kapitel \ref{chp:ums:websockserver} näher beschrieben wird. Um duch einmalige Ereignisse von externen Diensten per HTTP zu ermöglichen, baut ein PHP Script nun \texttt{on-demand} eine WebSocket Verbindung zu dem im Backend *REF* integrierten Server auf, setzt den gewünschten Befehl um und baut die Verbindung daraufhin wieder ab. 
+
+\subsubsection{IFTTT}
 
 
 
 
-\subsubsection{PHP Adapter Programme}
-
- 
 \clearpage
+
+
