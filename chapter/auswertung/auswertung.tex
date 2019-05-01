@@ -1,3 +1,21 @@
 \section{Auswertung}\label{kap:ausw}
+ \subsection{Inbetriebnahme}
+ \subsubsection{Hardware Voraussetzungen}
+ Voraussetzung für den Betrieb ist ein Raspberry Pi 2 oder 3. Außerdem ist eine Erweiterungsplatine \chphl{PiFace Digital2 \cite{URL:PiFaceDigital2}} erforderlich. Diese muss vor dem ersten Start auf die GPIO-Kontakte des Raspberry Pi aufgesteckt werden. Eine Funktion ohne das Hardwaremodul ist Grundsätzlich möglich, jedoch scheint ein Betrieb ohne Hardwareschnittstelle ohne Sinn. Die Software ist so konzipiert, dass auch andere Hardware-Module denkbar sind, eine Implementierung hierfür fehlt jedoch bislang.     
+ \subsubsection{Software Voraussetzungen}
+ Für den Betrieb wird ein Linux Betriebssystem vorausgesetzt. Hierfür kann das angepasstes Raspbian \cite{URL:Raspian} Image genutzt werden, welches auf der beigelegten DVD zu finden. Falls auf der SD Karte bereits ein Linux Betriebssystem installiert ist, kann das Arbeitsverzeichnis des Projekts auch einfach auf den Raspberry Pi übertragen werden. Ein Git Auszug hiervon ist ebenfalls auf der beigelegten DVD. Sollte die Wahl der Distribution auf eine andere als Raspbian Strech \cite{URL:Raspian} fallen, so muss das Projekt aus den Quellen übersetzt werden. In jedem Fall ist es nötig dass SPI aktiviert wird. Dies geschieht am einfachsten über das Raspberry Pi Konfigurationsprogramm. \texttt{sudo raspi-config} 
+ \subsubsection{Kompilieren des Projekts}
+ Ein kompilieren des Projekts ist nur erforderlich, wenn das Projekt auf einem anderen Betriebssystem als Raspian Strech \cite{URL:Raspian} verwendet werden soll, oder wenn Änderungen am Quellcode vorgenommen werden sollen.  
+ Dafür muß zunächst eine SSH Verbindung zum System herstellt werden. Das Projekt sollte daraufhin auf das System übertragen werden. Die Empfohlene Vorgehensweise hierfür ist, das GIT Repository über eine aktive Internetverbindung auf den Rasperry Pi zu klonen. \texttt{git clone https://github.com/dajuly20/ControlPi}. Um alle Abhängigkeiten dann automatisch zu installieren, kann nachfolgend genannte Installationsscript verwendet werden: \texttt{./start\_pull\_and\_build.sh}. Sollte keine Internetverbindung bestehen, können die auf der DVD mitgelieferten Bibliotheken auch manuell installiert werden. 
+ Eine Liste der benötigen Abhängigkeiten findet sich im \nameref{chp:anhang}.  
+ \subsection{Inbetriebnahme unter Raspian Strech}
+ Sollte auf dem Raspberry Pi bereits ein version von Raspian in er Version Strech installiert sein, so genügt es den Projektordner auf den Raspberry Pi zu übertragen. Hierfür dient entweder der Ordner \texttt{ControlPi} von der beigelegten DVD, oder das GIT Repository des Projekts, welches über mittels  \texttt{git clone https://github.com/dajuly20/ControlPi} auf den Raspberry Pi übertragen werden kann. Um sicherzustellen dass es sich um die aktuellste Version handelt, sollte das Projekt mit \texttt{git pull} auf den neusten Stand gebracht werden. Daraufhin kann mit \texttt{./start\_manual.sh} die Funktion überprüft werden. Dabei sollte der Benutzer in den Gruppen \texttt{spi} sowie \texttt{gpio} sein. Letztlich sollte das Projekt als Systemservice eingerichtet werden. Hierfür ist  das Script \texttt{./start\_as\_service.sh} dienlich. Es wird hier neben dem eigenen Systemservice auch ein Apache2 Webserver mit in Betrieb genommen.
+ \subsection{Ermittlung der IP - Adresse}
+ Nachdem der Systemservice läuft, muss nun ermittelt werden wie ein Zugriff auf die Weboberfläche erfolgen kann. Wenn der Raspberry Pi in ein bestehendes Netzwerk integriert wird, kann dies in der Oberfläche des verwendeten Internetrouters nachgesehen werden. Sofern dieser dies unterstützt, kann auch der Hostname des Raspberry Pi für den Zugriff verwendet werden. Der Hostname im mitgelieferten Raspian-Image lautet \texttt{ControlPi3}. Der Standard bei einem offiziellen Raspbian Image ist \texttt{raspberrypi}. 
+ \subsection{Aufruf der Weboberfläche}
+ Ist der Hostname oder die IP Adresse des Raspberry Pi ermittelt, kann dieser im Internetbrowser aufgerufen werden. Bei Verwendung des beigelegten Raspbian Images wäre der Aufruf \texttt{http://ControlPi3}.
+ \section{Test}
+ \section{Bugs}
+ \section{Fazit}
  
 \clearpage
