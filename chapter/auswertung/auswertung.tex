@@ -8,14 +8,24 @@
  Ein kompilieren des Projekts ist nur erforderlich, wenn das Projekt auf einem anderen Betriebssystem als Raspian Strech \cite{URL:Raspian} verwendet werden soll, oder wenn Änderungen am Quellcode vorgenommen werden sollen.  
  Dafür muß zunächst eine SSH Verbindung zum System herstellt werden. Das Projekt sollte daraufhin auf das System übertragen werden. Die Empfohlene Vorgehensweise hierfür ist, das GIT Repository über eine aktive Internetverbindung auf den Rasperry Pi zu klonen. \texttt{git clone https://github.com/dajuly20/ControlPi}. Um alle Abhängigkeiten dann automatisch zu installieren, kann nachfolgend genannte Installationsscript verwendet werden: \texttt{./start\_pull\_and\_build.sh}. Sollte keine Internetverbindung bestehen, können die auf der DVD mitgelieferten Bibliotheken auch manuell installiert werden. 
  Eine Liste der benötigen Abhängigkeiten findet sich im \nameref{chp:anhang}.  
- \subsection{Inbetriebnahme unter Raspian Strech}
- Sollte auf dem Raspberry Pi bereits ein version von Raspian in er Version Strech installiert sein, so genügt es den Projektordner auf den Raspberry Pi zu übertragen. Hierfür dient entweder der Ordner \texttt{ControlPi} von der beigelegten DVD, oder das GIT Repository des Projekts, welches über mittels  \texttt{git clone https://github.com/dajuly20/ControlPi} auf den Raspberry Pi übertragen werden kann. Um sicherzustellen dass es sich um die aktuellste Version handelt, sollte das Projekt mit \texttt{git pull} auf den neusten Stand gebracht werden. Daraufhin kann mit \texttt{./start\_manual.sh} die Funktion überprüft werden. Dabei sollte der Benutzer in den Gruppen \texttt{spi} sowie \texttt{gpio} sein. Letztlich sollte das Projekt als Systemservice eingerichtet werden. Hierfür ist  das Script \texttt{./start\_as\_service.sh} dienlich. Es wird hier neben dem eigenen Systemservice auch ein Apache2 Webserver mit in Betrieb genommen.
- \subsection{Ermittlung der IP - Adresse}
+ \subsubsection{Inbetriebnahme unter Raspbian Strech}
+ Sollte auf dem Raspberry Pi bereits ein Version von Raspbian in der Version Strech installiert sein, so genügt es den Projektordner auf den Raspberry Pi zu übertragen. Hierfür dient entweder der Ordner \texttt{ControlPi} auf der beigelegten DVD, oder das GIT Repository des Projekts, welches mittels  \texttt{git clone https://github.com/dajuly20/ControlPi} auf den Raspberry Pi übertragen werden kann. Um sicherzustellen dass es sich um die aktuellste Version handelt, sollte das Projekt mit \texttt{git pull} auf den neusten Stand gebracht werden. Daraufhin kann mit \texttt{./start\_manual.sh} die Funktion überprüft werden. Dabei sollte der Benutzer in den Gruppen \texttt{spi} sowie \texttt{gpio} sein. Letztlich sollte das Projekt als Systemservice eingerichtet werden. Hierfür ist das Script \texttt{./start\_as\_service.sh} dienlich. Es wird hier neben dem eigenen Systemservice auch ein Apache2 Webserver mit in Betrieb genommen.
+ \subsubsection{Ermittlung der IP - Adresse}
  Nachdem der Systemservice läuft, muss nun ermittelt werden wie ein Zugriff auf die Weboberfläche erfolgen kann. Wenn der Raspberry Pi in ein bestehendes Netzwerk integriert wird, kann dies in der Oberfläche des verwendeten Internetrouters nachgesehen werden. Sofern dieser dies unterstützt, kann auch der Hostname des Raspberry Pi für den Zugriff verwendet werden. Der Hostname im mitgelieferten Raspian-Image lautet \texttt{ControlPi3}. Der Standard bei einem offiziellen Raspbian Image ist \texttt{raspberrypi}. 
- \subsection{Aufruf der Weboberfläche}
+ \subsubsection{Aufruf der Weboberfläche}
  Ist der Hostname oder die IP Adresse des Raspberry Pi ermittelt, kann dieser im Internetbrowser aufgerufen werden. Bei Verwendung des beigelegten Raspbian Images wäre der Aufruf \texttt{http://ControlPi3}.
- \section{Test}
- \section{Bugs}
- \section{Fazit}
+ \subsection{Test}
+ 
+ \subsection{Bugs}
+ \subsection{Fazit}
+ \subsection{Ausblick}
+ Kopplung mehrerer Geräte;
+ Beschriftung der Ein Ausgänge in der Web Oberfläche. 
+ Shortcuts z.B. für Blinker
+ Set und Reset für Timer,
+ Set und Reset für Relays.
+ Änderung des Passworts für die Weboberfläche.
+ 
+ 
  
 \clearpage
