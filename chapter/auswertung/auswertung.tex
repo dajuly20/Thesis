@@ -1,4 +1,4 @@
-\section{Auswertung}\label{kap:ausw}
+\section{Übersicht Gesamtsystem}\label{kap:ausw}
  \subsection{Inbetriebnahme}
  \subsubsection{Hardware Voraussetzungen}
  Voraussetzung für den Betrieb ist ein Raspberry Pi 2 oder 3. Außerdem ist eine Erweiterungsplatine \chphl{PiFace Digital2 \cite{URL:PiFaceDigital2}} erforderlich. Diese muss vor dem ersten Start auf die GPIO-Kontakte des Raspberry Pi aufgesteckt werden. Eine Funktion ohne das Hardwaremodul ist Grundsätzlich möglich, jedoch scheint ein Betrieb ohne Hardwareschnittstelle ohne Sinn. Die Software ist so konzipiert, dass auch andere Hardware-Module denkbar sind, eine Implementierung hierfür fehlt jedoch bislang.     
@@ -25,7 +25,7 @@
  	\end{center} 
  \end{figure}	
 
- \subsubsection{Aufruf der Weboberfläche}
+ \subsubsection{Aufruf der Weboberfläche}\label{chp:FrontendUebersicht}
 Ist der Hostname oder die IP Adresse des Raspberry Pi ermittelt (siehe Abschnitt \ref{chp:ausw:ip} \nameref{chp:ausw:ip}), kann dieser im Internetbrowser aufgerufen werden. Bei Verwendung des beigelegten Raspbian Images wäre der Aufruf \texttt{http://ControlPi3}. \autoref{img:FrontendUebersicht} zeigt die Übersichtsseite der Steuerung. In der Mitte befindet sich eine Abbildung vom aktuell verwendeten Steuerungsprogramm, während an den Seiten die Zustände ein und Ausgänge angezeigt werden. Die Drop-Down Menüs oberhalb, ermöglichen es die gewünschte Ein- bzw. Ausgangsentität auszuwählen. Handelt es sich bei der ausgewählten Entität um einen Eingang, so wird anstelle einer LED ein Taste eingeblendet. Der Zustand kann dann, bei entsprechender Berechtigung (siehe \chpref{chp:ums:websock:auth} ), durch anklicken verändert werden.  
 
  \begin{figure}[H]
