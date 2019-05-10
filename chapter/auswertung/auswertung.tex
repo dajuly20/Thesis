@@ -49,21 +49,19 @@ Um ein Steuerungsprogramm zu erstellen, muß zunächst der Tab \texttt{Steuerung
 	\end{center} 
 \end{figure}	
 
+\subsection{Langzeittest}
+Um zu Testen wie sich die Steuerung längerfristig verhält wurde ein Timerbaustein verwendet, welcher sich selbst nach Ablauf schaltet und somit oszilliert. Als Testzeitraum wurde 48 Stunden gewählt. Dabei ließ sich feststellen, dass die Steuerung auch nach Ablauf dieser Zeit ohne Fehler  
 
  \subsection{Bugs}
  Zum derzeitigen Stand sind noch einige Probleme enthalten auf die nachfolgend eingegangen wird. Als  erstes sei hier zu nennen, dass die Reihenfolge in welcher das Backend über die Zeilen des erzeugten Steuerungsprogramms Iteriert unter bestimmten Voraussetzung Probleme bereitet. So wird der Wert eines Ausgangs unter noch nicht näher bekannten Umständen erst mit der nächsten Iteration des Logikprogramms übernommen. Dies könnte durch generelles doppeltes iterieren behoben werden, was allerdings die Performance vermindert.
  
  \subsection{Fazit}
- \subsection{Ausblick}
- Die Steuerung Funktioniert in den meisten Fällen ohne Probleme, ist jedoch noch nicht über ein frühes Betastadium hinaus. Es bedarf nun Feldtests um weitere Bugs in der Software aufzuspühren. Außerdem sind noch einige Funktionserweiterungen Denkbar. Zuerst anzuführen wäre hier die Kopplung zweier Geräte. Die Grundvoraussetzungen hierfür sind durch die Implementierung  von WebSockets bereits geschaffen. Entweder müsste hier eine Mittelschicht geschrieben werden, welche die zwei WebSocket Server auf den beiden Geräten miteinander kommunizieren lässt. Etwas eleganter jedoch wäre die Implementierung eines WebSocket Clients in das Backend. Mit einer angepassten Konfigurationsdatei könnte das Backend sich so zu einem anderen Gerät verbinden um dessen Virtuelle Ein und Ausgänge auch am lokalen Gerät nutzbar zu machen. WebSockets haben durch die persistente Verbindung sehr gutes Verhältnis zwischen Overhead und Payload und sollten somit eine recht geringe zeitliche Verzögerung ermöglichen. Die Erfahrung von der Verbindung zwischen Web-Frontend und Backend zeigen kaum merkliche Verzögerungszeiten. Eine Weitere Funktion über welche nachgedacht wurde, ist ein anlegen von Unterstromkreisen. Somit könnten zum Beispiel Blinkerbausteine oder \texttt{Stromstoßschalter}, das sind Bauteile die ihren Logikzustand durch einen Eingangsimpuls wechseln, realisiert werden. Dabei würde die Implementierung abstrahiert und die Übersichtlichkeit erhöht. Ebenfalls denkbar wäre die Zusammenfassung der Timer Ein- und Ausgänge in ein einziges Bauteil. Die Umsetzung beim Export könnte hierbei beibehalten werden. 
-  
- Kopplung mehrerer Geräte;
- Beschriftung der Ein Ausgänge in der Web Oberfläche. 
- Shortcuts z.B. für Blinker
- Set und Reset für Timer,
- Set und Reset für Relays.
- Änderung des Passworts für die Weboberfläche.
+ Das Projekt teilte sich wesentlich in zwei Teile. Das Backend ist einen Teil, welcher sich auf einer sehr Hardwarenahen Ebene abspielte. Die Benutzeroberfläche hingegen, ist sehr nahe am Benutzer. Damit spiegelte dieses Projekt viele Nuancen der Technischen Informatik wieder. Die meiste Arbeit entfiel dabei in die Programmierung des Backend, welches in mehrere parallele Handlungsstränge aufgeteilt ist, welche synchronisiert werden wollen. Auch das arbeiten mit C++ Bibliotheken und das Kompilieren brachte einige Herausforderungen mit sich. Die Anbindung der Benutzeroberfläche beleuchteten eine relativ junge Technologie der modernen Webentwicklung. Auch das Anpassen des Logik Editors und die damit verbundene Einarbeitung in ein fremdes Open-Source Projekt machten dieses Projekt sehr lehrreich. Zuletzt boten sich auch die Gelegenheit zu erproben wie eine Software durch Systemabbilder oder Git verteilt werden kann, und wie man diese mit \LaTeX\ so dokumentiert, dass möglichst alle Aspekte beleuchtet werden und die  Arbeit unkompliziert weitergeführt werden kann.
  
+ \subsection{Ausblick}
+ Die Steuerung Funktioniert in den meisten Fällen ohne Probleme, ist jedoch noch nicht über ein frühes Betastadium hinaus. Es bedarf nun Feldtests um weitere Bugs in der Software aufzuspüren. Außerdem sind noch einige Funktionserweiterungen Denkbar. Zuerst anzuführen wäre hier die Kopplung zweier Geräte. Die Grundvoraussetzungen hierfür sind durch die Implementierung  von WebSockets bereits geschaffen. Entweder müsste hier eine Mittelschicht geschrieben werden, welche die zwei WebSocket Server auf den beiden Geräten miteinander kommunizieren lässt. Etwas eleganter jedoch wäre die Implementierung eines WebSocket Clients in das Backend. Mit einer angepassten Konfigurationsdatei könnte das Backend sich so zu einem anderen Gerät verbinden um dessen Virtuelle Ein und Ausgänge auch am lokalen Gerät nutzbar zu machen. WebSockets haben durch die persistente Verbindung sehr gutes Verhältnis zwischen Overhead und Payload und sollten somit eine recht geringe zeitliche Verzögerung ermöglichen. Die Erfahrung von der Verbindung zwischen Web-Frontend und Backend zeigen kaum merkliche Verzögerungszeiten. Eine Weitere Funktion über welche nachgedacht wurde, ist ein anlegen von Unterstromkreisen. Somit könnten zum Beispiel Blinkerbausteine oder \texttt{Stromstoßschalter}, das sind Bauteile die ihren Logikzustand durch einen Eingangsimpuls wechseln, realisiert werden. Dabei würde die Implementierung abstrahiert und die Übersichtlichkeit erhöht. Ebenfalls denkbar wäre die Zusammenfassung der Timer Ein- und Ausgänge in ein einziges Bauteil. Die Umsetzung beim Export könnte hierbei beibehalten werden. 
+  
+
  
  
 \clearpage
